@@ -1,23 +1,7 @@
 ---
-- name: Ensure Apache2 Webserver is installed
-  apt:
-    name: apache2
-    update_cache: True
+- name: Ensure dependencies are installed
+  package:
+    name: "{{ item }}"
+    update_cache: "{{ apache_apt_cache_update }}"
     state: present
-
-- name: Ensure mod_rewrite is enable
-  apache2_module:
-    name: rewrite
-    state: present
-
-- name: Configure Apache Virtual Host
-  lineinfile:
-    dest: /etc/apache2/sites-available/000-default.conf
-    regexp: "^<VirtualHost \*:80>"
-    line: "<VirtualHost *:8081>"
-    state: present
-
-- name: Restart Apache
-  service:
-    name: apache2
-    state: restarted
+  loop: "{{ apache_packages_extra }}"
