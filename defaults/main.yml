@@ -1,4 +1,6 @@
 ---
+apache_restart_state: restarted
+apache_service: apache2
 apache_apt_cache_update: True
 apache_packages_state: present
 apache_packages_extra: []
