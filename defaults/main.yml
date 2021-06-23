@@ -1,4 +1,6 @@
 ---
+apache_apt_cache_update: True
+apache_packages_state: present
 apache_packages_extra: []
 
 apache_packages:
