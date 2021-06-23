@@ -9,6 +9,11 @@
   apache2_module:
     name: rewrite
     state: present
-  service:
-    name: apache2
-    state: restarted
+  notify:
+    - restart apache
+  
+  handler:
+    - name: restart apache
+      service:
+        name: apache
+        state: restarted
