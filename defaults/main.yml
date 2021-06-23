@@ -1,1 +1,6 @@
+---
 apache_packages_extra: []
+
+apache_packages:
+  - apache2
+  - apache2-utils

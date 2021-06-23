@@ -5,3 +5,10 @@
     update_cache: "{{ apache_apt_cache_update }}"
     state: present
   loop: "{{ apache_packages_extra }}"
+
+- name: Ensure Apache is installed
+  package:
+    name: "{{ item }}"
+    update_cache: "{{ apache_apt_cache_update }}"
+    state: "{{ apache_packages_state }}"
+  loop: "{{ apache_packages }}"
