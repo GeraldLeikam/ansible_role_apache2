@@ -30,3 +30,4 @@ apache_mods_enabled:
   - unique_id
   - autoindex
 
+apache_mods_disabled: []
