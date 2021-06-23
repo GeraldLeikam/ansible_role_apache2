@@ -12,3 +12,11 @@
     update_cache: "{{ apache_apt_cache_update }}"
     state: "{{ apache_packages_state }}"
   loop: "{{ apache_packages }}"
+
+- name: Configure Apache listening ports
+  replace:
+    path: "{{ item.file }}"
+    regexp: "{{ item.regexp }}"
+    replace: "{{ item.replace }}"
+  loop: "{{ apache_ports_configuration_items }}"
+  notify: apache_restart

@@ -8,3 +8,14 @@ apache_packages_extra: []
 apache_packages:
   - apache2
   - apache2-utils
+
+apache_listen_port: 80
+apache_listen_port_ssl: 443
+apache_server_root: /etc/apache2
+apache_ports_configuration_items:
+  - file: "{{ __apache_server_root }}/ports.conf"
+    regexp: "^(Listen).*$"
+    replace: '\1 {{ apache_listen_port }}'
+  - file: "{{ __apache_server_root }}/ports.conf"
+    regexp: '^([ \t]+Listen).*$'
+    replace: '\1 {{ apache_listen_port_ssl }}'
