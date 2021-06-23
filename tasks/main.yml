@@ -20,3 +20,10 @@
     replace: "{{ item.replace }}"
   loop: "{{ apache_ports_configuration_items }}"
   notify: apache_restart
+
+- name: Enable Apache mods
+  apache2_module:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ apache_mods_enabled }}"
+  notify: apache_restart

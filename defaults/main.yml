@@ -19,3 +19,14 @@ apache_ports_configuration_items:
   - file: "{{ apache_server_root }}/ports.conf"
     regexp: '^([ \t]+Listen).*$'
     replace: '\1 {{ apache_listen_port_ssl }}'
+
+apache_mods_enabled:
+  - rewrite
+  - ssl
+  - headers
+  - env
+  - dir
+  - mime
+  - unique_id
+  - autoindex
+
