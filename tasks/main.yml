@@ -10,6 +10,13 @@
     name: rewrite
     state: present
 
+- name: Configure Apache Virtual Host
+  lineinfile:
+    dest: /etc/apache2/sites-available/000-default.conf
+    regexp: "^<VirtualHost \*:80>"
+    line: "<VirtualHost *:8081>"
+    state: present
+
 - name: Restart Apache
   service:
     name: apache2
