@@ -1,0 +1,6 @@
+---
+- name: Ensure Apache2 Webserver is installed
+  apt:
+    name: apache2
+    update_cache: True
+    state: present
